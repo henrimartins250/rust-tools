@@ -106,7 +106,7 @@ A VIEW deve relacionar as tabelas para mostrar o histórico completo dos serviç
     pub struct Produto {
         codigo_produto: i32,
         nome: String,
-        descrição: String,
+        descricao: String,
         preco: f32,
         quantidade: i32,
     }
@@ -114,35 +114,82 @@ A VIEW deve relacionar as tabelas para mostrar o histórico completo dos serviç
     let conn = Connection::open_in_memory()?;
 
     conn.execute(
-        "CREATE TABLE person (
-            id   INTEGER PRIMARY KEY,
-            name TEXT NOT NULL,
-            data BLOB
-        )",
+        "
+            PRAGMA foreign_keys = ON;
+
+create table cliente(
+    cpf INTEGER PRIMARY KEY,
+    nome varchar(100) not null,
+);
+
+create table animal(
+    id INTEGER PRIMARY KEY,
+    nome varchar(100)  NOT NULL,
+    especie varchar(100) NOT NULL,
+    cpf_cliente char(11) NOT NULL,
+    FOREIGN KEY (cpf_cliente) REFERENCES cliente(cpf)
+);
+
+create table funcionario(
+    cpf INTEGER PRIMARY KEY NOT NULL,
+    nome varchar(100) NOT NULL,
+    endereco varchar(100) NOT NULL,
+    telefone varchar(20) NOT NULL,
+    funcao varchar(100) NOT NULL,
+
+);
+
+create table servico_animal(
+    id_Servico INTEGER PRIMARY KEY,
+    cpf_cliente CHAR(11) NOT NULL,
+    cpf_funcionario CHAR(11) NOT NULL,
+    id_animal int NOT NULL,
+    descricao VARCHAR(100) NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    data TEXT NOT NULL, -- entregue pela api em formatio ISO 8601 YYYY-MM-DD
+    FOREIGN KEY (cpf_cliente) REFERENCES cliente(cpf),
+    FOREIGN KEY (cpf_funcionario) REFERENCES funcionario(cpf),
+    FOREIGN KEY (id_animal) REFERENCES animal(id)
+);
+
+
+
+create view Boletim_Servicos as
+    select
+        cliente.nome,
+        animal.nome,
+        servico_animal.descricao,
+        funcionario.nome,
+        servico_animal.preco,
+        servico_animal.data
+            from servico_animal
+                join cliente on servico_animal.cpf_cliente = cliente.cpf
+                join animal on servico_animal.id_animal = animal.id_animal
+                join funcionario on servico_animal.cpf_funcionario = funcionario.cpf;
+        ",
         (), // empty list of parameters.
     )?;
-    let me = Person {
-        id: 0,
-        name: "Steven".to_string(),
-        data: None,
-    };
-    conn.execute(
-        "INSERT INTO person (name, data) VALUES (?1, ?2)",
-        (&me.name, &me.data),
-    )?;
 
-    let mut stmt = conn.prepare("SELECT id, name, data FROM person")?;
-    let person_iter = stmt.query_map([], |row| {
-        Ok(Person {
-            id: row.get(0)?,
-            name: row.get(1)?,
-            data: row.get(2)?,
-        })
+    let mut stmt = conn.prepare(
+        "SELECT name, type 
+         FROM sqlite_master 
+         WHERE type IN ('table', 'view') 
+         AND name NOT LIKE 'sqlite_%'"
+    )?;
+  
+
+    let rows = stmt.query_map([], |row| {
+        let name: String = row.get(0)?;
+        let object_type: String = row.get(1)?;
+        Ok((name, object_type))
     })?;
 
-    for person in person_iter {
-        println!("Found person {:?}", person?);
+    println!("Tables and Views:");
+    for row in rows {
+        let (name, object_type) = row?;
+        println!(" - {} ({})", name, object_type);
     }
+
     Ok(())
 }
 

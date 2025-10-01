@@ -1,0 +1,192 @@
+{
+  "recommendations": [
+    // ESLint for JavaScript/TypeScript linting
+    "dbaeumer.vscode-eslint",
+
+    // Prettier for code formatting
+    "esbenp.prettier-vscode",
+
+    // Python language support
+    "ms-python.python",
+
+    // Julia code formatting
+    "0h7z.vscode-julia-format",
+
+    // SQLite database explorer
+    "alexcvzz.vscode-sqlite",
+
+    // Flutter code snippets
+    "alexisvt.flutter-snippets",
+
+    // Lightweight browser inside VS Code
+    "antfu.browse-lite",
+
+    // Vite tooling support
+    "antfu.vite",
+
+    // Neovim integration
+    "asvetliakov.vscode-neovim",
+
+    // Julia color themes
+    "cameronbieganek.julia-color-themes",
+
+    // JDBC database client
+    "cweijan.dbclient-jdbc",
+
+    // MySQL client
+    "cweijan.vscode-mysql-client2",
+
+    // Dart language support
+    "dart-code.dart-code",
+
+    // Flutter development tools
+    "dart-code.flutter",
+
+    // Designliquido theme
+    "designliquido.designliquido-vscode",
+
+    // GitLens for Git superpowers
+    "eamodio.gitlens",
+
+    // HTML/CSS support
+    "ecmel.vscode-html-css",
+
+    // Auto rename paired HTML/XML tags
+    "formulahendry.auto-rename-tag",
+
+    // Run code snippets
+    "formulahendry.code-runner",
+
+    // MySQL management
+    "formulahendry.vscode-mysql",
+
+    // GitHub Codespaces support
+    "github.codespaces",
+
+    // GitHub Copilot AI coding assistant
+    "github.copilot",
+
+    // GitHub Copilot Chat
+    "github.copilot-chat",
+
+    // GitHub VS Code theme
+    "github.github-vscode-theme",
+
+    // RemoteHub for remote repositories
+    "github.remotehub",
+
+    // GitHub Pull Request integration
+    "github.vscode-pull-request-github",
+
+    // Prettier SQL formatting
+    "inferrinizzard.prettier-sql-vscode",
+
+    // MySQL syntax highlighting
+    "jakebathman.mysql-syntax",
+
+    // Peacock workspace color themes
+    "johnpapa.vscode-peacock",
+
+    // Julia language support
+    "julialang.language-julia",
+
+    // Flutter tree view
+    "marcelovelasquez.flutter-tree",
+
+    // Docker tooling
+    "ms-azuretools.vscode-docker",
+
+    // Portuguese language pack
+    "ms-ceintl.vscode-language-pack-pt-br",
+
+    // .NET development kit
+    "ms-dotnettools.csdevkit",
+
+    // C# language support
+    "ms-dotnettools.csharp",
+
+    // .NET runtime
+    "ms-dotnettools.vscode-dotnet-runtime",
+
+    // MSSQL workspace tools
+    "ms-mssql.data-workspace-vscode",
+
+    // MSSQL database support
+    "ms-mssql.mssql",
+
+    // SQL bindings for MSSQL
+    "ms-mssql.sql-bindings-vscode",
+
+    // SQL database projects
+    "ms-mssql.sql-database-projects-vscode",
+
+    // Python debugging
+    "ms-python.debugpy",
+
+    // Python language server
+    "ms-python.vscode-pylance",
+
+    // Azure Repos integration
+    "ms-vscode.azure-repos",
+
+    // CMake build tools
+    "ms-vscode.cmake-tools",
+
+    // C/C++ language support
+    "ms-vscode.cpptools",
+
+    // C/C++ extension pack
+    "ms-vscode.cpptools-extension-pack",
+
+    // C/C++ themes
+    "ms-vscode.cpptools-themes",
+
+    // Remote repositories support
+    "ms-vscode.remote-repositories",
+
+    // Live Share collaboration
+    "ms-vsliveshare.vsliveshare",
+
+    // SQLTools database management
+    "mtxr.sqltools",
+
+    // Oracle MySQL Shell
+    "oracle.mysql-shell-for-vs-code",
+
+    // Dart syntax highlighting
+    "oscarcs.dart-syntax-highlighting-only",
+
+    // Material icon theme
+    "pkief.material-icon-theme",
+
+    // Live Server for web development
+    "ritwickdey.liveserver",
+
+    // Qt for Python development
+    "seanwu.vscode-qt-for-python",
+
+    // VS Code Pets fun extension
+    "tonybaloney.vscode-pets",
+
+    // CMake language support
+    "twxs.cmake",
+
+    // ErrorLens for inline error highlighting
+    "usernamehw.errorlens",
+
+    // IntelliCode API usage examples
+    "visualstudioexptteam.intellicode-api-usage-examples",
+
+    // IntelliCode AI-assisted coding
+    "visualstudioexptteam.vscodeintellicode",
+
+    // Unity development tools
+    "visualstudiotoolsforunity.vstuc",
+
+    // nix support
+    "bbenoist.Nix",
+
+    // catpuccin theme
+    "Catppuccin.catppuccin-vsc"
+  ]
+}

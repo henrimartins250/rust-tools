@@ -35,7 +35,31 @@ create table servico_animal(
     FOREIGN KEY (id_animal) REFERENCES animal(id)
 );
 
+create table produto (
+id INTEGER PRIMARY KEY,
+nome varchar(150) not null,
+descricao varchar(150) not null,
+preco decimal(10, 2) not null,
+estoque integer not null,
+);
 
+create table compra(
+id integer primary key,
+cpf_cliente char(11) not null,
+cpf_funcionario char(11) not null,
+total decimal(10,2) not null,
+data date not null,
+foreign key (cpf_cliente) references cliente(cpf),
+foreign key(cpf_funcionario) references funcionario(cpf)
+);
+
+create table compra_produto (
+id_compra integer not null,
+id_produto integer not null,
+primary key (compraid, prodid),
+foreign key (references compra(id),
+foreign key (id_produto) references produto(id)
+);
 
 create view Boletim_Servicos as
     select
@@ -49,3 +73,17 @@ create view Boletim_Servicos as
                 join cliente on servico_animal.cpf_cliente = cliente.cpf
                 join animal on servico_animal.id_animal = animal.id_animal
                 join funcionario on servico_animal.cpf_funcionario = funcionario.cpf;
+
+      create view relatorio_compras as
+        select     
+          cliente.nome,
+          funcionario.nome,
+          compra.id,
+          produto.nome as nome_produto,
+          compra.total as valor_total,
+          compra.data
+          from compra
+            join cliente on compra.cpf_cliente = cliente.cpf
+            join funcionario on compra.cpf_funcionario = funcionario.cpf
+            join compra_produto on compra_produto.id_compra = compra.id
+            join produto on compraproduto.prodid = produto.idprod;
